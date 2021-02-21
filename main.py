@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import os
 
+print(os.system("python -m pip install dcoder --user"))
+
 intents = discord.Intents.default()
 
 client = commands.Bot(command_prefix="d!", intents=intents)
