@@ -5,7 +5,6 @@ import dcoder
 class Encode(commands.Cog):
     def __init__(self, client):
         self.client = client
-        print(f"{__name__} Successfully loaded.")
     
     @commands.Cog.listener()
     async def on_ready(self):
