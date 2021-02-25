@@ -1,8 +1,10 @@
+import asyncio
+import os
+import sqlite3
+
 import discord
 from discord.ext import commands
-import asyncio
-import sqlite3
-import os
+
 
 class Compete(commands.Cog):
     def __init__(self, client):
@@ -46,7 +48,7 @@ Feel free to send `Yes` or `Y` in the chat within a minute if you wanna compete.
         start_time = time.time()
 
         try:
-            answer = await self.client.wait_for('message', timeout=300.0, check=lambda message: message.author.id == ctx.author.id and isinstance(message.channel, discord.DMChannel) and message.content.lower() == stuff["finalAnswer"])
+            await self.client.wait_for('message', timeout=300.0, check=lambda message: message.author.id == ctx.author.id and isinstance(message.channel, discord.DMChannel) and message.content.lower() == stuff["finalAnswer"])
         except asyncio.TimeoutError:
             return await ctx.send(f"{ctx.author.mention}, didn't answer in enough time, no points were given.")
 
@@ -76,6 +78,37 @@ Feel free to send `Yes` or `Y` in the chat within a minute if you wanna compete.
         conn.commit()
         cursor.close()
         conn.close()
+
+    @commands.command(name="leaderboard", aliases=['lb'])
+    async def leaderboard(self, ctx):
+        conn = sqlite3.connect('data/competeWins.db')
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM wins ORDER BY wins DESC")
+        stuff = cursor.fetchmany(10)
+
+        embed = discord.Embed(title="Leaderboard", color=0xfffff0)
+
+        for data in stuff:
+            embed.add_field(name=f"\u2800", value=f"User: <@{data[0]}>, Career Wins: **{data[1]}**, Time taken for last run: **{data[2]} Seconds**", inline=False)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(name="wins")
+    async def wins(self, ctx, user: discord.Member = None):
+        if user is None:
+            user = ctx.author
+
+        conn = sqlite3.connect('data/competeWins.db')
+        cursor = conn.cursor()
+
+        cursor.execute(F"SELECT * FROM wins WHERE UserID = ?", (user.id, ))
+        data = cursor.fetchone()
+
+        if data is None:
+            return await ctx.send("We do not have any data about the user in our databases.")
+
+        await ctx.send(data)
 
 
 def setup(client):
