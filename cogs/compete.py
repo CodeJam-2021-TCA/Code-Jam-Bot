@@ -29,7 +29,7 @@ class Compete(commands.Cog):
             return await ctx.send("Not a valid difficulty choose one from the following list `easy|medium|hard`")
 
         await ctx.send("""Hello there User 👋🏻,
-It is me, Cryptographer, it seems like you wanna compete ( Test Yourself ), You will be given 5 minutes to decode the following text
+It is me, Cryptographer, it seems like you wanna compete ( Test Yourself ), You will be given 30 minutes to decode the following text
 After you have Solved it You are supposed to DM me ( You NEED TO have your DMs Open in order to do this. ).
 Feel free to send `Yes` or `Y` in the chat within a minute if you wanna compete.
 """)
@@ -48,7 +48,7 @@ Feel free to send `Yes` or `Y` in the chat within a minute if you wanna compete.
         start_time = time.time()
 
         try:
-            await self.client.wait_for('message', timeout=300.0, check=lambda message: message.author.id == ctx.author.id and isinstance(message.channel, discord.DMChannel) and message.content.lower() == stuff["finalAnswer"])
+            await self.client.wait_for('message', timeout=1800.0, check=lambda message: message.author.id == ctx.author.id and isinstance(message.channel, discord.DMChannel) and message.content.lower() == stuff["finalAnswer"])
         except asyncio.TimeoutError:
             return await ctx.send(f"{ctx.author.mention}, didn't answer in enough time, no points were given.")
 
@@ -106,10 +106,12 @@ Feel free to send `Yes` or `Y` in the chat within a minute if you wanna compete.
         data = cursor.fetchone()
 
         if data is None:
-            return await ctx.send("We do not have any data about the user in our databases.")
+            return await ctx.send("We do not have any data about the user in our database.")
 
-        await ctx.send(data)
-
+        embed = discord.Embed(title="Wins", color=0xfffff0)
+        embed.add_field(name="Total Career wins.", value=f"{data[1]} Wins", inline=False)
+        embed.add_field(name="Time taken to solve the last run.", value=f"{data[2]} Seconds", inline=False)
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(Compete(client))
