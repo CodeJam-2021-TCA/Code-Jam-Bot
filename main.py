@@ -7,6 +7,22 @@ client = commands.Bot(command_prefix="d!", intents=intents, case_insensitive=Tru
 
 client.remove_command('help')
 
+
+@client.event
+async def on_command_error(ctx, error):
+    if hasattr(error, "original"):
+        error = error.original
+
+    if isinstance(error, commands.errors.CommandNotFound):
+        pass
+    else:
+        await ctx.send(f"An Error occured {str(error)}.")
+
+
+@client.event
+async def on_ready():
+    print("I am Ready 👋🏻.")
+
 for i in os.listdir('./cogs'):
     if i.endswith('.py'):
         try:

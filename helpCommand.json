@@ -1,0 +1,127 @@
+{
+    "default": {
+        "fields": [
+            {
+                "inline": false,
+                "name": "d!help",
+                "value": "Help Command"
+            },
+            {
+                "inline": false,
+                "name": "d!decode",
+                "value": "Decode Stuff"
+            },
+            {
+                "inline": false,
+                "name": "d!encode",
+                "value": "Encode Stuff"
+            },
+            {
+                "inline": false,
+                "name": "d!decrypt ",
+                "value": "Decrypt Stuff using ciphers"
+            },
+            {
+                "inline": false,
+                "name": "d!atbash",
+                "value": "Switch A to Z, Y to B and so on..."
+            },
+            {
+                "inline": false,
+                "name": "d!reverse",
+                "value": "Reverse the text."
+            },
+            {
+                "inline": false,
+                "name": "d!compete",
+                "value": "Use `d!help compete` for a description on this command"
+            }, 
+            {
+                "inline": false,
+                "name": "d!leaderboard",
+                "value": "Leaderboard for the Compete command."
+            },
+            {
+                "inline": false,
+                "name": "wins",
+                "value": "Check The wins of you or another user, earned in the `d!compete` command"
+            }
+        ],
+        "color": 16777200,
+        "type": "rich",
+        "description": "Help Command",
+        "title": "Help"
+    },
+
+    "decode": {
+        "color": 16777200,
+        "type": "rich",
+        "description": "Use `d!decode` for help regarding this command",
+        "title": "Decode"
+   },
+
+   "decrypt": {
+    "color": 16777200,
+    "type": "rich",
+    "description": "Use `d!decrypt` for help regarding this command",
+    "title": "Decrypt"
+    },
+
+    "encode": {
+        "color": 16777200,
+        "type": "rich",
+        "description": "Use `d!encode` for help regarding this command",
+        "title": "Encode"
+   },
+
+   "encrypt": {
+    "color": 16777200,
+    "type": "rich",
+    "description": "Use `d!encrypt` for help regarding this command",
+    "title": "Encrypt"
+    },
+
+    "compete": {
+        "fields": [
+             {
+                  "inline": true,
+                  "name": "Cooldown",
+                  "value": "45 Minutes"
+             },
+             {
+                "inline": true,
+                "name": "Max time to solve each round",
+                "value": "30 Minutes"
+             }
+        ],
+        "color": 16777200,
+        "type": "rich",
+        "description": "Welcome to the main attraction for this bot. \nUse `d!race <easy|medium|hard>` to see how it works.",
+        "title": "Compete"
+   },
+   "leaderboard": {
+    "type": "rich",
+    "description": "Leader-Board for the `d!compete` command.",
+    "title": "Leader-Board",
+    "color": 16777200
+   }, 
+   
+   "wins": {
+    "type": "rich",
+    "description": "Check the wins of you or another user earned in the `d!compete` command.",
+    "title": "Wins",
+    "color": 16777200
+    },
+    "atbash": {
+        "type": "rich",
+        "title": "Atbash",
+        "description": "Replace A with Z, B with Y and so on... e.g. I like Dogs --> R orpv Wlth",
+        "color": 16777200
+        },
+    "reverse": {
+        "type": "rich",
+        "title": "Reverse",
+        "description": "Reverse/Flip the text... e.g. I like Dogs --> sgoD ekil I",
+        "color": 16777200
+        }
+}
