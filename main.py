@@ -3,8 +3,9 @@ from discord.ext import commands
 import os
 
 intents = discord.Intents.default()
-
 client = commands.Bot(command_prefix="d!", intents=intents, case_insensitive=True)
+
+client.remove_command('help')
 
 for i in os.listdir('./cogs'):
     if i.endswith('.py'):

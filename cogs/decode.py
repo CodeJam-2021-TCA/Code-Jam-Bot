@@ -6,15 +6,11 @@ class Decode(commands.Cog):
     def __init__(self, client):
         self.client = client
     
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print("OH ok, i am here")
-    
     @commands.group(name="decode")
     async def decode(self, ctx):
         if ctx.invoked_subcommand is None:
-            embed = discord.Embed(title="Will do it later LOL")
-            await ctx.send(embed=embed)  
+            embed = discord.Embed(title="Decrypt", description="Usage --> `d!decode <method>`\nAvailable Methods `binary, octal, hexadecimal, ascii (numerical ascii)`", color=0xfffff0)
+            await ctx.send(embed=embed)
     
     @decode.command(name="binary", aliases=['binary2text', 'binarytotext'])
     async def binary(self, ctx, *, text):

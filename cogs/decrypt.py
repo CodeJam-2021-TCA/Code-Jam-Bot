@@ -9,7 +9,7 @@ class Decrypt(commands.Cog):
     @commands.group(name="decrypt")
     async def decrypt(self, ctx):
         if ctx.invoked_subcommand is None:
-            embed = discord.Embed(title="Will do it later LOL")
+            embed = discord.Embed(title="Decrypt", description="Usage --> `d!decrypt <cipher>`\nAvailable Ciphers `railfence, caesar`", color=0xfffff0)
             await ctx.send(embed=embed)
 
     @decrypt.command(name="railfence", aliases=['railfence2text', 'railfencetotext'])

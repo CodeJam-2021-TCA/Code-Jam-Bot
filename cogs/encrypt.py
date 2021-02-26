@@ -9,7 +9,7 @@ class Encrypt(commands.Cog):
     @commands.group(name="encrypt")
     async def encrypt(self, ctx):
         if ctx.invoked_subcommand is None:
-            embed = discord.Embed(title="Will do it later LOL")
+            embed = discord.Embed(title="Decrypt", description="Usage --> `d!encrypt <cipher>`\nAvailable Ciphers `railfence, caesar`", color=0xfffff0)
             await ctx.send(embed=embed)
 
     @encrypt.command(name="railfence", aliases=['etxt2railfence', 'texttorailfence'])

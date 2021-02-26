@@ -13,7 +13,7 @@ class Encode(commands.Cog):
     @commands.group(name="encode")
     async def encode(self, ctx):
         if ctx.invoked_subcommand is None:
-            embed = discord.Embed(title="Will do it later LOL")
+            embed = discord.Embed(title="Decrypt", description="Usage --> `d!encode <method>`\nAvailable Methods `binary, octal, hexadecimal, ascii (numerical ascii)`", color=0xfffff0)
             await ctx.send(embed=embed)  
     
     @encode.command(name="binary", aliases=['text2binary', 'texttobinary'])
