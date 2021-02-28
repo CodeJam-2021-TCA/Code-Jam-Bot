@@ -10,7 +10,7 @@ class Compete(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(name="race")
+    @commands.command(name="race", aliases=['compete'])
     async def race(self, ctx, difficulty=None):
 
         if difficulty is None:
