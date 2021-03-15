@@ -2,11 +2,7 @@ import discord
 from discord.ext import commands
 import os
 
-intents = discord.Intents.default()
-client = commands.Bot(command_prefix="d!", intents=intents, case_insensitive=True)
-
-client.remove_command('help')
-
+client = commands.Bot(command_prefix="d!", case_insensitive=True, help_command=None)
 
 @client.event
 async def on_command_error(ctx, error):
